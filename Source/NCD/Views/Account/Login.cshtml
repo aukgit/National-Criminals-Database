@@ -1,0 +1,33 @@
+﻿@using NCD.Models
+
+@model LoginViewModel
+
+@{
+    ViewBag.Title = "Log in";
+}
+
+<div class="form-center login">
+    <div class="absolute-center">
+        <a class="logo-link" href="@Url.Action(string.Empty, "Home")">
+            <img src="~/Content/img/spectre.png" />
+            <h2>National Criminals Database</h2>
+        </a>
+
+        @using (Html.BeginForm("Login", "Account", FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+
+            @Html.TextBoxFor(model => model.Email, new { @class = "form-control responsive", placeholder = "Enter email address" })
+            @Html.ValidationMessageFor(model => model.Email)
+
+            @Html.PasswordFor(model => model.Password, new { @class = "form-control responsive", placeholder = "Password" })
+            @Html.ValidationMessageFor(model => model.Password)
+            <br />
+            <button type="submit" class="button button-primary responsive spacer">Login</button>
+        }
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

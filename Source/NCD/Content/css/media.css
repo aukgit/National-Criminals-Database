@@ -1,0 +1,20 @@
+﻿
+/* Mobile
+----------------------------------------------------------------------*/
+@media (max-width: 720px) {
+    .container { width: 100%; }
+    .form-control-group .form-control { margin-bottom: 5px; }
+}
+@media (max-width: 520px) {         
+    .responsive {  display: block !important; width: 100% !important; }
+    .responsive.spacer { margin-right: 0; margin-bottom: 5px }
+    .resposnive.pull-right { float: none; }
+    .register { padding: 0; }
+
+    .logo { width: 85px; height: 85px; }
+    .header h2 { height: 85px; line-height: 85px; margin-left: 5px; }
+    .header form { text-align: right; }
+    .header .button-danger { position: static; margin-top: 5px; }
+    .search .form-control.height { width: 58%; margin-right: 0; }
+    .search .form-control.height.right {  width: 40%; float: right }
+}

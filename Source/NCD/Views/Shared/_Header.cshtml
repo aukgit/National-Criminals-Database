@@ -1,0 +1,15 @@
+﻿<div class="header">
+    <img src="~/Content/img/spectre.png" class="logo top-block"/>
+
+    <h2 class="top-block">National Criminals Database</h2>
+    
+    @if (this.Request.IsAuthenticated)
+    {
+        using (Html.BeginForm("LogOff", "Account", FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+            <button type="submit" class="button button-danger">Logout</button>
+        }
+    }
+</div>
+

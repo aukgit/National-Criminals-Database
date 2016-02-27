@@ -40,7 +40,7 @@ namespace NCD.Infrastructure {
 
         private static IQueryable<Person> GetNameFilter(IQueryable<Person> query, SearchRequest criteria) {
             if (!string.IsNullOrWhiteSpace(criteria.Name))
-                return query.Where(item => item.Name.StartsWith(criteria.Name));
+                return query.Where(item => item.Name.Contains(criteria.Name));
 
             return query;
         }

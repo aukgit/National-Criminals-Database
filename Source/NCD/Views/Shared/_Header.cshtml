@@ -3,7 +3,7 @@
 
     <h2 class="top-block">National Criminals Database</h2>
     
-    @if (this.Request.IsAuthenticated)
+    @if (Request.IsAuthenticated)
     {
         using (Html.BeginForm("LogOff", "Account", FormMethod.Post))
         {

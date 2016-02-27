@@ -1,9 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace NCD.Models
-{
-    public class RegisterViewModel
-    {
+namespace NCD.Models {
+    public class RegisterViewModel {
         [Required]
         [EmailAddress]
         [Display(Name = "Email")]

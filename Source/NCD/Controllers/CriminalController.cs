@@ -5,21 +5,18 @@ using NCD.Application.Services;
 using NCD.Models;
 using Ninject;
 
-namespace NCD.Controllers
-{
-    public class CriminalController : Controller
-    {
+namespace NCD.Controllers {
+    [Authorize]
+    public class CriminalController : Controller {
         [Inject]
         public ISearchService SearchService { get; set; }
 
         [Inject]
         public IEmailService EmailService { get; set; }
 
-        public ActionResult Index()
-        {
-            var model = new SearchViewModel
-            {
-                Email = this.HttpContext.GetOwinContext().Request.User.Identity.Name,
+        public ActionResult Index() {
+            var model = new SearchViewModel {
+                Email = HttpContext.GetOwinContext().Request.User.Identity.Name
             };
 
             return View(model);
@@ -27,12 +24,9 @@ namespace NCD.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Search(SearchViewModel model)
-        {
-            if (ModelState.IsValid)
-            {
-                var searchRequest = new SearchRequest
-                {
+        public ActionResult Search(SearchViewModel model) {
+            if (ModelState.IsValid) {
+                var searchRequest = new SearchRequest {
                     Email = model.Email,
                     MaxNumberResults = model.MaxNumberResults.Value,
                     Name = model.Name,

@@ -1,9 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace NCD.Models
-{
-    public class SearchViewModel
-    {
+namespace NCD.Models {
+    public class SearchViewModel {
         [StringLength(50, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 3)]
         public string Name { get; set; }
 

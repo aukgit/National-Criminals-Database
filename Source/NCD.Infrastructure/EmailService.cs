@@ -60,8 +60,8 @@ namespace NCD.Infrastructure
 
                     foreach (var pdf in pdfs.Skip(i * 10).Take(10))
                     {
-                        MemoryStream stream = new MemoryStream(pdf.Data);
-                        Attachment attachment = new Attachment(stream, pdf.Name, "application/pdf");
+                        var stream = new MemoryStream(pdf.Data);
+                        var attachment = new Attachment(stream, pdf.Name, "application/pdf");
                         message.Attachments.Add(attachment);
                     }
 

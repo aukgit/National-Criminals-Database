@@ -1,7 +1,5 @@
-﻿namespace NCD.Application.Domain
-{
-    public enum CriminalStatusEnum
-    {
+﻿namespace NCD.Application.Domain {
+    public enum CriminalStatusEnum {
         Arrested = 1,
         Escaped,
         Bailed,

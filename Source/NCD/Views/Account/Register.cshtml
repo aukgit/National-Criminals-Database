@@ -8,16 +8,16 @@
 }
 
 <div class="form">
-    @using (Html.BeginForm("Register", "Account", FormMethod.Post, new {role = "form"})) {
+    @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { role = "form" })) {
         @Html.AntiForgeryToken()
-        @Html.ValidationSummary(true)
+        @Html.ValidationSummary("", new { @class = "text-danger" })
         <h4>Create a new account.</h4>
 
-        @Html.TextBoxFor(model => model.Email, new {@class = "form-control responsive", placeholder = "Enter email address"})
+        @Html.TextBoxFor(model => model.Email, new { @class = "form-control responsive", placeholder = "Enter email address" })
         @Html.ValidationMessageFor(model => model.Email)
-        @Html.PasswordFor(model => model.Password, new {@class = "form-control responsive", placeholder = "Password"})
+        @Html.PasswordFor(model => model.Password, new { @class = "form-control responsive", placeholder = "Password" })
         @Html.ValidationMessageFor(model => model.Password)
-        @Html.PasswordFor(model => model.ConfirmPassword, new {@class = "form-control responsive", placeholder = "Confirm password"})
+        @Html.PasswordFor(model => model.ConfirmPassword, new { @class = "form-control responsive", placeholder = "Confirm password" })
         @Html.ValidationMessageFor(model => model.ConfirmPassword)
         <br />
         <button type="submit" class="button button-primary responsive spacer">Submit</button>

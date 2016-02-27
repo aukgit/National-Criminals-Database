@@ -3,6 +3,6 @@ using NCD.Application.Domain;
 
 namespace NCD.Application.Services {
     public interface ISearchService {
-        IEnumerable<Person> SearchCriminal(SearchRequest criteria);
+        IList<Person> SearchCriminal(SearchRequest criteria);
     }
 }

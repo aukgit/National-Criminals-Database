@@ -11,7 +11,7 @@ namespace NCD.Infrastructure {
         [Inject]
         public IApplicationDbContext ApplicationDbContext { get; set; }
 
-        public IEnumerable<Person> SearchCriminal(SearchRequest searchRequest) {
+        public IList<Person> SearchCriminal(SearchRequest searchRequest) {
             var query = ApplicationDbContext.Persons.Select(item => item);
 
             query = GetNameFilter(query, searchRequest);
@@ -25,7 +25,17 @@ namespace NCD.Infrastructure {
             if (maxResults > 0) {
                 query = query.Take(maxResults);
             }
-            return query;
+
+            // Method signature has been changed from IEnumerable to IList
+            /**
+             * Reason: Once the data type converted to IEnumerable from IQueryable, the query runs in the SQL Server.
+             *         So there is no point of keep the IEnumerable<> lazy data type because data is already evaluated.
+             *         In addition, having IList will help get the greedy algorithms runs faster like Count or anything similar
+             *         because data is already in the memory. 
+             *         There is no need to evaluate through the data.
+             **/
+
+            return query.ToList();
         }
 
         private static IQueryable<Person> GetNameFilter(IQueryable<Person> query, SearchRequest criteria) {

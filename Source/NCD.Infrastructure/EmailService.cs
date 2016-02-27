@@ -11,11 +11,10 @@ using RazorEngine.Templating;
 
 namespace NCD.Infrastructure {
     public class EmailService : IEmailService {
-        public void Send(string emailAddress, IEnumerable<Person> persons) {
+        public void Send(string emailAddress, IList<Person> persons) {
             if (!string.IsNullOrWhiteSpace(emailAddress)) {
-                if (persons != null && persons.Any()) {
+                if (persons != null && persons.Count > 0) {
                     var pdfs = new List<ReportFile>();
-
                     foreach (var person in persons) {
                         var htmlTemplate = GenerateHtmlString(person);
                         var pdf = ConvertToPdf(htmlTemplate);
@@ -25,6 +24,9 @@ namespace NCD.Infrastructure {
                         });
                     }
                     SendEmail(emailAddress, pdfs);
+                    pdfs = null;
+
+                    GC.Collect();
                 }
             }
         }

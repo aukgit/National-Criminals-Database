@@ -20,6 +20,8 @@
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -41,10 +43,6 @@
   <ItemGroup>
     <Reference Include="DevMvcComponent, Version=2.2.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\DevMVCComponent.2.2.0\lib\DevMvcComponent.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="FoolproofValidation, Version=0.9.5851.39121, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\foolproof.0.9.4518\lib\net45\FoolproofValidation.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
@@ -202,12 +200,6 @@
     <Content Include="App_Data\national-criminals_log.ldf">
       <DependentUpon>national-criminals.mdf</DependentUpon>
     </Content>
-    <Content Include="Client Scripts\mvcfoolproof.unobtrusive.js" />
-    <Content Include="Client Scripts\mvcfoolproof.unobtrusive.min.js" />
-    <Content Include="Client Scripts\MvcFoolproofJQueryValidation.js" />
-    <Content Include="Client Scripts\MvcFoolproofJQueryValidation.min.js" />
-    <Content Include="Client Scripts\MvcFoolproofValidation.js" />
-    <Content Include="Client Scripts\MvcFoolproofValidation.min.js" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\css\additional-styles.css" />
@@ -280,7 +272,9 @@
     <Content Include="Views\Criminal\Index.cshtml" />
     <Content Include="Views\Criminal\Confirmation.cshtml" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
@@ -289,6 +283,10 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\FoolProof\Foolproof.csproj">
+      <Project>{46e69639-cb61-4db0-ad4e-6515fdefb6c1}</Project>
+      <Name>Foolproof</Name>
+    </ProjectReference>
     <ProjectReference Include="..\NCD.Application\NCD.Application.csproj">
       <Project>{0FC0B9CA-9D07-43E8-98FE-3CC3DA1B0FE4}</Project>
       <Name>NCD.Application</Name>
@@ -326,6 +324,13 @@
       </FlavorProperties>
     </VisualStudio>
   </ProjectExtensions>
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
+  </Target>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

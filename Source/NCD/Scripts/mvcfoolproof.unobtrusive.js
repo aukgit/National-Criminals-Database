@@ -7,11 +7,13 @@ foolproof.is = function (value1, operator, value2, passOnNull) {
 
         var value1nullish = isNullish(value1);
         var value2nullish = isNullish(value2);
+        var eitherBothNull = value1nullish === true && (value1nullish === value2nullish);
 
-        if ((value1nullish && !value2nullish) || (value2nullish && !value1nullish))
+        if ((value1nullish && !value2nullish) || (value2nullish && !value1nullish) || (eitherBothNull)) {
             return true;
+        }
     }
-    
+
     var isNumeric = function (input) {
         return (input - 0) == input && input.length > 0;
     };

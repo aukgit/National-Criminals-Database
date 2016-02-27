@@ -6,9 +6,12 @@
     @Html.Partial("_Header")
 }
 <hgroup class="title">
-    <h2>You placed you search successfully:</h2>
+    <h2 class="green">You placed you search successfully:</h2>
 </hgroup>
 
-<h3>
-    To see the results of your query, check your email. To make a new search click @Html.ActionLink("here.", "Index", "Criminal", null, new {@class = "button button-primary responsive spacer"}) .
-</h3>
+<div>
+    To see the results of your query, check your email.
+    To make a new search click you can click on below link.
+    <div class="top-gap-2x"></div>
+    @Html.ActionLink("Search again", "Index", "Criminal", null, new { @class = "button button-primary responsive spacer" }) 
+</div>

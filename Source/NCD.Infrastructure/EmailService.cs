@@ -25,38 +25,51 @@ namespace NCD.Infrastructure {
                     }
                     SendEmail(emailAddress, pdfs);
                     pdfs = null;
-
                     GC.Collect();
                 }
             }
         }
 
         private static void SendEmail(string emailAddress, List<ReportFile> pdfs) {
-            var client = new SmtpClient();
-            var batches = (pdfs.Count / 10) + 1;
 
-            for (var i = 0; i < batches - 1; i++) {
-                var subject = "Criminal Profiles";
+            var smtpClient = SmtpClientExtend.GetSmtpClient();
+            const int take = 10;
+
+            var batches = (pdfs.Count / take) + 1;
+            var createdDateTime = DateTime.UtcNow;
+            const string pdfType = "application/pdf";
+
+            for (var i = 0; i < batches ; i++) {
+                var subject = "[National Criminals Database] Criminal Profiles";
 
                 if (batches > 1) {
                     subject += string.Format(" - Part {0}/{1}", (i + 1), batches);
                 }
+                string body = "Hi, we are sending you the results of your search. Please open the attached files.";
 
-                using (var message = new MailMessage()) {
-                    message.To.Add(new MailAddress(emailAddress));
-                    message.From = new MailAddress(@"test.project@crossover.com");
-                    message.Subject = subject;
-                    message.Body = "Hi, we are sending you the results of your search. Please open the attached files.";
-                    message.IsBodyHtml = false;
+                //using (var message = new MailMessage()) {
+                //    message.To.Add(new MailAddress(emailAddress));
+                //    //message.From = new MailAddress(@"test.project@crossover.com");
+                //    message.From = new MailAddress(smtpClient.SenderEmailAddress);
+                //    message.Subject = subject;
+                //    message.Body = ;
+                //    message.IsBodyHtml = false;
 
-                    foreach (var pdf in pdfs.Skip(i * 10).Take(10)) {
-                        var stream = new MemoryStream(pdf.Data);
-                        var attachment = new Attachment(stream, pdf.Name, "application/pdf");
-                        message.Attachments.Add(attachment);
-                    }
-
-                    client.Send(message);
+                var batchPdfs = pdfs.Skip(i * 10).Take(take);
+                var attachments = new List<Attachment>(take);
+                foreach (var pdf in batchPdfs) {
+                    var stream = new MemoryStream(pdf.Data);
+                    var attachment = new Attachment(stream, pdf.Name + ".pdf", pdfType);
+                    attachment.ContentDisposition.CreationDate = createdDateTime;
+                    attachment.ContentDisposition.ModificationDate = createdDateTime;
+                    attachments.Add(attachment);
                 }
+                smtpClient.QuickSend(emailAddress, 
+                                     subject, 
+                                     body, 
+                                     isAsync: false, 
+                                     attachments:attachments);
+
             }
         }
 

@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NCD.Infrastructure", "NCD.I
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NCD.Application", "NCD.Application\NCD.Application.csproj", "{0FC0B9CA-9D07-43E8-98FE-3CC3DA1B0FE4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PasswordEncrypt", "PasswordEncrypt\PasswordEncrypt.csproj", "{ECF14BF9-E982-4442-A26D-C434F8DA5D52}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{0FC0B9CA-9D07-43E8-98FE-3CC3DA1B0FE4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0FC0B9CA-9D07-43E8-98FE-3CC3DA1B0FE4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0FC0B9CA-9D07-43E8-98FE-3CC3DA1B0FE4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ECF14BF9-E982-4442-A26D-C434F8DA5D52}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ECF14BF9-E982-4442-A26D-C434F8DA5D52}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ECF14BF9-E982-4442-A26D-C434F8DA5D52}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ECF14BF9-E982-4442-A26D-C434F8DA5D52}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

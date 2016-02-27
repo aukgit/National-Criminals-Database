@@ -1,16 +1,14 @@
 ﻿@model NCD.Models.SearchViewModel
 @{
-    ViewBag.Title = "Log in";
+    ViewBag.Title = "Email Sent!";
 }
-
 @section header {
     @Html.Partial("_Header")
 }
-
 <hgroup class="title">
-    <h2>You placed you search sucessfully:</h2>
+    <h2>You placed you search successfully:</h2>
 </hgroup>
 
 <h3>
-    To see the results of your query, check your email or @Html.ActionLink("do another search.", "Index", "Criminal", null, new {@class = "button button-primary responsive spacer"})
+    To see the results of your query, check your email. To make a new search click @Html.ActionLink("here.", "Index", "Criminal", null, new {@class = "button button-primary responsive spacer"}) .
 </h3>

@@ -18,8 +18,14 @@ namespace NCD.Infrastructure {
             query = GetAgeFilter(query, searchRequest);
             query = GetHeightFilter(query, searchRequest);
             query = GetWeightFilter(query, searchRequest);
-
-            return query.OrderBy(item => item.Name).Take(searchRequest.MaxNumberResults);
+            
+            // order by
+            query = query.OrderBy(item => item.Name);
+            int maxResults = searchRequest.MaxNumberResults;
+            if (maxResults > 0) {
+                query = query.Take(maxResults);
+            }
+            return query;
         }
 
         private static IQueryable<Person> GetNameFilter(IQueryable<Person> query, SearchRequest criteria) {

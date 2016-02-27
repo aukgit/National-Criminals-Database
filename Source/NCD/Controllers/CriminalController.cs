@@ -28,7 +28,7 @@ namespace NCD.Controllers {
             if (ModelState.IsValid) {
                 var searchRequest = new SearchRequest {
                     Email = model.Email,
-                    MaxNumberResults = model.MaxNumberResults.Value,
+                    MaxNumberResults = model.MaxNumberResults.HasValue ? model.MaxNumberResults.Value : 0,
                     Name = model.Name,
                     AgeFrom = model.AgeFrom,
                     AgeTo = model.AgeTo,

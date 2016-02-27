@@ -196,8 +196,11 @@
     </Content>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\css\additional-styles.css" />
+    <Content Include="Content\css\color-fonts.css" />
     <Content Include="Content\css\media.css" />
     <Content Include="Content\css\style.css" />
+    <Content Include="Content\css\utilities.css" />
     <Content Include="Content\img\spectre.png" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -205,6 +208,24 @@
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Content\less\additional-styles.less" />
+    <Content Include="Content\less\color-fonts.less" />
+    <Content Include="Content\less\fonts-rimixens.less" />
+    <Content Include="Content\less\remixens\elements.less" />
+    <Content Include="Content\less\remixens\extra-remixens.less" />
+    <Content Include="Content\less\remixens\global.less" />
+    <Content Include="Content\less\remixens\lesshat.less" />
+    <Content Include="Content\less\remixens\variables.less" />
+    <Content Include="Content\css\color-fonts.css.map">
+      <DependentUpon>color-fonts.css</DependentUpon>
+    </Content>
+    <Content Include="Content\css\additional-styles.css.map">
+      <DependentUpon>additional-styles.css</DependentUpon>
+    </Content>
+    <Content Include="Content\less\utilities.less" />
+    <Content Include="Content\css\utilities.css.map">
+      <DependentUpon>utilities.css</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />

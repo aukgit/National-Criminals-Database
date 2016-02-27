@@ -10,7 +10,7 @@
             <img src="~/Content/img/spectre.png" />
             <h2>National Criminals Database</h2>
         </a>
-
+        @Html.ValidationSummary("", new { @class = "text-danger" })
         @using (Html.BeginForm("Login", "Account", FormMethod.Post)) {
             @Html.AntiForgeryToken()
 
@@ -19,7 +19,7 @@
 
             @Html.PasswordFor(model => model.Password, new {@class = "form-control responsive", placeholder = "Password"})
             @Html.ValidationMessageFor(model => model.Password)
-            <br />
+            <div class="top-gap"></div>
             <button type="submit" class="button button-primary responsive spacer">Login</button>
         }
     </div>

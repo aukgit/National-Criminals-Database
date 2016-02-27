@@ -31,7 +31,7 @@ namespace NCD.Infrastructure {
 
         private static void SendEmail(string emailAddress, List<ReportFile> pdfs) {
             var client = new SmtpClient();
-            var batches = (pdfs.Count/10) + 1;
+            var batches = (pdfs.Count / 10) + 1;
 
             for (var i = 0; i < batches - 1; i++) {
                 var subject = "Criminal Profiles";
@@ -47,7 +47,7 @@ namespace NCD.Infrastructure {
                     message.Body = "Hi, we are sending you the results of your search. Please open the attached files.";
                     message.IsBodyHtml = false;
 
-                    foreach (var pdf in pdfs.Skip(i*10).Take(10)) {
+                    foreach (var pdf in pdfs.Skip(i * 10).Take(10)) {
                         var stream = new MemoryStream(pdf.Data);
                         var attachment = new Attachment(stream, pdf.Name, "application/pdf");
                         message.Attachments.Add(attachment);

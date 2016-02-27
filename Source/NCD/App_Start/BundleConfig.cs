@@ -21,7 +21,11 @@ namespace NCD {
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                 "~/Content/css/style.css",
-                "~/Content/css/media.css"));
+                "~/Content/css/media.css",
+                "~/Content/css/additional-styles.css", // additional css added which will be converted from .less files 
+                "~/Content/css/color-fonts.css",
+                "~/Content/css/utilities.css"
+                )); 
         }
     }
 }

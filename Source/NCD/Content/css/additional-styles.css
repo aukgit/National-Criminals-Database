@@ -1,0 +1,29 @@
+﻿/*
+    # validation css - start : ->
+*/
+.validation-summary-errors {
+  display: inline-block;
+  text-align: left;
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  list-style: none;
+}
+.validation-summary-errors ul {
+  padding: 0;
+  margin: 0px 0px 14px 0px;
+  margin: 0 0 1.4rem 0;
+}
+.validation-summary-errors ul li {
+  list-style: none;
+}
+.text-danger {
+  color: red;
+}
+.text-danger ul > li {
+  color: red;
+}
+/*
+    ## validation css - end ##
+*/
+/*# sourceMappingURL=additional-styles.css.map */

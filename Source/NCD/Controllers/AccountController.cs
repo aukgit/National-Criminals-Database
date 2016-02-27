@@ -21,14 +21,12 @@ namespace NCD.Controllers {
             SignInManager = signInManager;
         }
 
-        public ApplicationSignInManager SignInManager
-        {
+        public ApplicationSignInManager SignInManager {
             get { return _signInManager ?? HttpContext.GetOwinContext().Get<ApplicationSignInManager>(); }
             private set { _signInManager = value; }
         }
 
-        public ApplicationUserManager UserManager
-        {
+        public ApplicationUserManager UserManager {
             get { return _userManager ?? HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>(); }
             private set { _userManager = value; }
         }
@@ -60,7 +58,7 @@ namespace NCD.Controllers {
                 case SignInStatus.LockedOut:
                     return View("Lockout");
                 default:
-                    ModelState.AddModelError("", "Invalid login attempt.");
+                    ModelState.AddModelError("", "Username or password is invalid.");
                     return View(model);
             }
         }
@@ -79,7 +77,7 @@ namespace NCD.Controllers {
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Register(RegisterViewModel model) {
             if (ModelState.IsValid) {
-                var user = new ApplicationUser {UserName = model.Email, Email = model.Email};
+                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded) {
                     await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
@@ -129,8 +127,7 @@ namespace NCD.Controllers {
         // Used for XSRF protection when adding external logins
         private const string XsrfKey = "XsrfId";
 
-        private IAuthenticationManager AuthenticationManager
-        {
+        private IAuthenticationManager AuthenticationManager {
             get { return HttpContext.GetOwinContext().Authentication; }
         }
 
@@ -163,7 +160,7 @@ namespace NCD.Controllers {
             public string UserId { get; set; }
 
             public override void ExecuteResult(ControllerContext context) {
-                var properties = new AuthenticationProperties {RedirectUri = RedirectUri};
+                var properties = new AuthenticationProperties { RedirectUri = RedirectUri };
                 if (UserId != null) {
                     properties.Dictionary[XsrfKey] = UserId;
                 }

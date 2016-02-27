@@ -1,15 +1,16 @@
 using System;
 using System.Web;
 using Microsoft.Web.Infrastructure.DynamicModuleHelper;
+using NCD;
 using NCD.Application.Services;
 using NCD.Infrastructure;
 using Ninject;
 using Ninject.Web.Common;
 
-[assembly: WebActivatorEx.PreApplicationStartMethod(typeof (NCD.App_Start.NinjectWebCommon), "Start")]
-[assembly: WebActivatorEx.ApplicationShutdownMethodAttribute(typeof (NCD.App_Start.NinjectWebCommon), "Stop")]
+[assembly: WebActivatorEx.PreApplicationStartMethod(typeof (NinjectWebCommon), "Start")]
+[assembly: WebActivatorEx.ApplicationShutdownMethodAttribute(typeof (NinjectWebCommon), "Stop")]
 
-namespace NCD.App_Start {
+namespace NCD {
     public static class NinjectWebCommon {
         private static readonly Bootstrapper bootstrapper = new Bootstrapper();
 

@@ -39,7 +39,7 @@ namespace NCD.Infrastructure {
             var createdDateTime = DateTime.UtcNow;
             const string pdfType = "application/pdf";
 
-            for (var i = 0; i < batches ; i++) {
+            for (var i = 0; i < batches; i++) {
                 var subject = "[National Criminals Database] Criminal Profiles";
 
                 if (batches > 1) {
@@ -64,11 +64,13 @@ namespace NCD.Infrastructure {
                     attachment.ContentDisposition.ModificationDate = createdDateTime;
                     attachments.Add(attachment);
                 }
-                smtpClient.QuickSend(emailAddress, 
-                                     subject, 
-                                     body, 
-                                     isAsync: false, 
-                                     attachments:attachments);
+                if (attachments.Count > 0) {
+                    smtpClient.QuickSend(emailAddress,
+                                         subject,
+                                         body,
+                                         isAsync: false,
+                                         attachments: attachments);
+                }
 
             }
         }

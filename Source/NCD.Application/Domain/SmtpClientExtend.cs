@@ -1,6 +1,4 @@
-﻿using System.Net;
-using System.Net.Mail;
-using System.Web.Configuration;
+﻿using System.Web.Configuration;
 using DevMvcComponent;
 using DevMvcComponent.Encryption;
 using DevMvcComponent.Mail;
@@ -38,8 +36,6 @@ namespace NCD.Application.Domain {
             }
             return _customMailServer;
         }
-
-
 
     }
 }

@@ -1,5 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
-
+using Foolproof;
 namespace NCD.Application.Domain {
     public class SearchRequest {
         [StringLength(50, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 3)]
@@ -27,7 +27,7 @@ namespace NCD.Application.Domain {
 
         [Required]
         [EmailAddress]
-        [StringLength(50, ErrorMessage = "The email is to long, it should not exced 50 characters.")]
+        [StringLength(50, ErrorMessage = "The email is to long, it should not exceed 50 characters.")]
         public string Email { get; set; }
 
         [Required]

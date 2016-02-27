@@ -20,9 +20,4 @@ namespace NCD.Application.Domain {
 
         public string Country { get; set; }
     }
-
-    public class ReportFile {
-        public string Name { get; set; }
-        public byte[] Data { get; set; }
-    }
 }

@@ -59,6 +59,7 @@ namespace NCD.Controllers {
                     return View("Confirmation");
                 } else {
                     ModelState.AddModelError("", "Sorry ! No results found with these parameters.");
+                    return View("Index", model);
                 }
             }
             ModelState.AddModelError("", "Sorry ! Invalid query parameters.");

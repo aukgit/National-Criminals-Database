@@ -188,6 +188,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\HtmlHelpers.cs" />
     <Compile Include="Models\LoginViewModel.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\RegisterViewModel.cs" />
@@ -203,15 +204,39 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\css\additional-styles.css" />
+    <Content Include="Content\css\animate-refresh.css" />
+    <Content Include="Content\css\animate.css" />
     <Content Include="Content\css\color-fonts.css" />
+    <Content Include="Content\css\header.css" />
     <Content Include="Content\css\media.css" />
     <Content Include="Content\css\style.css" />
     <Content Include="Content\css\utilities.css" />
+    <Content Include="Content\fonts\fontawesome-webfont.svg" />
     <Content Include="Content\img\spectre.png" />
+    <Content Include="Content\css\animate.css.map">
+      <DependentUpon>animate.css</DependentUpon>
+    </Content>
+    <Content Include="Content\fonts\fontawesome-webfont.eot" />
+    <Content Include="Content\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Content\fonts\fontawesome-webfont.woff" />
+    <Content Include="Content\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Content\fonts\FontAwesome.otf" />
+    <Content Include="Content\css\header.css.map">
+      <DependentUpon>header.css</DependentUpon>
+    </Content>
+    <None Include="Content\less\animate.less" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="JavaScript-Mvc-framework\app.js" />
+    <Content Include="JavaScript-Mvc-framework\app.run.js" />
+    <Content Include="JavaScript-Mvc-framework\byId.js" />
+    <Content Include="JavaScript-Mvc-framework\controllers\controllers.js" />
+    <Content Include="JavaScript-Mvc-framework\controllers\CriminalController.js" />
+    <Content Include="JavaScript-Mvc-framework\controllers\controllers.initialize.js" />
+    <Content Include="JavaScript-Mvc-framework\extensions\initialize.js" />
+    <Content Include="JavaScript-Mvc-framework\jQueryExtend.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Content\less\additional-styles.less" />
@@ -232,6 +257,8 @@
     <Content Include="Content\css\utilities.css.map">
       <DependentUpon>utilities.css</DependentUpon>
     </Content>
+    <Content Include="Content\less\animate-refresh.less" />
+    <Content Include="Content\less\header.less" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -290,6 +317,10 @@
     <ProjectReference Include="..\NCD.Application\NCD.Application.csproj">
       <Project>{0FC0B9CA-9D07-43E8-98FE-3CC3DA1B0FE4}</Project>
       <Name>NCD.Application</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NCD.Constants\NCD.Constants.csproj">
+      <Project>{032a5866-830d-42c9-b562-1788212bc619}</Project>
+      <Name>NCD.Constants</Name>
     </ProjectReference>
     <ProjectReference Include="..\NCD.Infrastructure\NCD.Infrastructure.csproj">
       <Project>{6DE0747C-990A-4E3B-9F7B-D8A974762F44}</Project>

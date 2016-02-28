@@ -1,43 +1,42 @@
 ﻿@model NCD.Models.SearchViewModel
 @{
-    ViewBag.Title = "Log in";
+    ViewBag.Title = "Criminals";
 }
-
 @section header {
     @Html.Partial("_Header")
 }
-
-<div class="form search">
-    @using (Html.BeginForm("Search", "Criminal", FormMethod.Post, new { role = "form" })) {
+<div class="form search" id="criminal-controller" data-action="index">
+    @*JavaScript codes are placed inside ~/JavaScript-Mvc-framework/controllers/CriminalController.js*@
+    @using (Html.BeginForm("Search", "Criminal", FormMethod.Post, new {role = "form"})) {
         @Html.AntiForgeryToken()
 
         <h4>Enter criteria to search</h4>
 
-        @Html.ValidationSummary("", new { @class = "text-danger" })
-        @Html.TextBoxFor(model => model.MaxNumberResults, new { @class = "form-control responsive", placeholder = "Max number of results", @type = "number", @min = "0" })
+        @Html.ValidationSummary("", new {@class = "text-danger"})
+        @Html.TextBoxFor(model => model.MaxNumberResults, new {@class = "form-control responsive", placeholder = "Max number of results", @type = "number", @min = "0"})
         @Html.ValidationMessageFor(model => model.MaxNumberResults)
 
-        @Html.TextBoxFor(model => model.Name, new { @class = "form-control responsive", placeholder = "Enter person name", maxlength = "200" })
+        @Html.TextBoxFor(model => model.Name, new {@class = "form-control responsive", placeholder = "Enter person name", maxlength = "200"})
 
         <div class="form-control-group responsive">
             <div class="responsive top-block">
-                @Html.TextBoxFor(model => model.AgeFrom, new { @class = "form-control responsive spacer", placeholder = "From age", @type = "number", @min = "0" })
+                @Html.TextBoxFor(model => model.AgeFrom, new {@class = "form-control responsive spacer", placeholder = "From age", @type = "number", @min = "0"})
                 @Html.ValidationMessageFor(model => model.AgeFrom)
             </div>
             <div class="responsive top-block">
-                @Html.TextBoxFor(model => model.AgeTo, new { @class = "form-control responsive", placeholder = "to age", @type = "number", @min = "0" })
+                @Html.TextBoxFor(model => model.AgeTo, new {@class = "form-control responsive", placeholder = "to age", @type = "number", @min = "0"})
                 <div class="form-description">*Leave 'to age' blank for specific age</div>
                 @Html.ValidationMessageFor(model => model.AgeTo)
             </div>
         </div>
         <div class="form-control-group responsive">
             <div class="responsive top-block">
-                @Html.TextBoxFor(model => model.HeightFrom, new { @class = "form-control responsive spacer", placeholder = "From height (cm)", @type = "number", @min = "0" })
+                @Html.TextBoxFor(model => model.HeightFrom, new {@class = "form-control responsive spacer", placeholder = "From height (cm)", @type = "number", @min = "0"})
                 @Html.ValidationMessageFor(model => model.HeightFrom)
             </div>
             <div class="responsive top-block">
                 <div class="responsive top-block">
-                    @Html.TextBoxFor(model => model.HeightTo, new { @class = "form-control responsive spacer", placeholder = "to height (cm)", @type = "number", @min = "0" })
+                    @Html.TextBoxFor(model => model.HeightTo, new {@class = "form-control responsive spacer", placeholder = "to height (cm)", @type = "number", @min = "0"})
                     @Html.ValidationMessageFor(model => model.HeightTo)
                 </div>
                 <div class="form-description">*Leave 'to height' blank for specific age</div>
@@ -45,15 +44,15 @@
         </div>
 
         <div class="form-control-group responsive">
-            @Html.TextBoxFor(model => model.WeightFrom, new { @class = "form-control responsive spacer", placeholder = "From weight (kg)", @type = "number", @step = "0.01", @min = "0" })
+            @Html.TextBoxFor(model => model.WeightFrom, new {@class = "form-control responsive spacer", placeholder = "From weight (kg)", @type = "number", @step = "0.01", @min = "0"})
             <div class="responsive top-block">
-                @Html.TextBoxFor(model => model.WeightTo, new { @class = "form-control responsive", placeholder = "to weight (kg)", @type = "number", @step = "0.01", @min = "0" })
+                @Html.TextBoxFor(model => model.WeightTo, new {@class = "form-control responsive", placeholder = "to weight (kg)", @type = "number", @step = "0.01", @min = "0"})
                 <div class="form-description">*Leave 'to weight' blank for specific age</div>
             </div>
         </div>
 
         <h4>Send result to this email:</h4>
-        @Html.TextBoxFor(model => model.Email, new { @class = "form-control responsive", placeholder = "Enter recipient email address" })
+        @Html.TextBoxFor(model => model.Email, new {@class = "form-control responsive", placeholder = "Enter recipient email address"})
         @Html.ValidationMessageFor(model => model.Email)
         <br />
 

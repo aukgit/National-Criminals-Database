@@ -20,6 +20,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{A36A50
 		.nuget\NuGet.targets = .nuget\NuGet.targets
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NCD.Constants", "NCD.Constants\NCD.Constants.csproj", "{032A5866-830D-42C9-B562-1788212BC619}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{799EABB5-24F4-4CD2-9CDB-19D5DE7FD50D}"
+	ProjectSection(SolutionItems) = preProject
+		WebEssentials-Settings.json = WebEssentials-Settings.json
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -46,6 +53,10 @@ Global
 		{46E69639-CB61-4DB0-AD4E-6515FDEFB6C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{46E69639-CB61-4DB0-AD4E-6515FDEFB6C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{46E69639-CB61-4DB0-AD4E-6515FDEFB6C1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{032A5866-830D-42C9-B562-1788212BC619}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{032A5866-830D-42C9-B562-1788212BC619}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{032A5866-830D-42C9-B562-1788212BC619}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{032A5866-830D-42C9-B562-1788212BC619}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

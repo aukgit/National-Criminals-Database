@@ -6,7 +6,10 @@
     @if (Request.IsAuthenticated) {
         using (Html.BeginForm("LogOff", "Account", FormMethod.Post)) {
             @Html.AntiForgeryToken()
-            <button type="submit" class="button button-danger">Logout</button>
+            <button type="submit" class="button button-danger">
+                <i class="@Icons.Logout"></i>
+                Logout
+            </button>
         }
     }
 </div>

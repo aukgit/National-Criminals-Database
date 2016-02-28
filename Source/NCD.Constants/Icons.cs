@@ -108,6 +108,9 @@
         public const string Bed = "fa fa-bed";
         public const string Hostpital = "fa fa-h-square";
         public const string Signin = "fa fa-sign-in";
+        public const string Search = "fa fa-search";
+        public const string SearchPlus = "fa fa-search-plus";
+        public const string SearchMinus = "fa fa-search-minus";
         public const string Login = Signin;
         public const string Signout = "fa fa-sign-out";
         public const string Logout = Signout;
@@ -116,7 +119,13 @@
         public const string Plane = "fa fa-paper-plane";
         public const string Send = Plane;
         public const string Submit = Plane;
+        public const string Key = "fa fa-key";
+        public const string Lock = "fa fa-lock";
+        public const string Unlock = "fa fa-unlock";
+        public const string PocketGet = "fa fa-get-pocket";
+        public const string LocationArrow = "fa fa-location-arrow";
         
+       
         
     }
 }

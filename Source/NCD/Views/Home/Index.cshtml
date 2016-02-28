@@ -1,10 +1,12 @@
-﻿<div class="form-center home">
+﻿@{
+    ViewBag.Title = "National Criminals Database (NCD)";
+}
+<div class="form-center home">
     <div class="absolute-center">
         <img src="~/Content/img/spectre.png" />
         <h2>National Criminals Database</h2>
-
-        <p>Login or register to begin</p>
-        @Html.ActionLink("Login", "Login", "Account", null, new {@class = "button button-primary responsive spacer"})
-        @Html.ActionLink("Register", "Register", "Account", null, new {@class = "button button-success responsive"})
+        <p class="green">Login or register to begin</p>
+        @Html.ActionLinkWithIcon("Login", "Login", "Account", null, "", Icons.Login, "button button-primary responsive spacer", h1: false)
+        @Html.ActionLinkWithIcon("Register", "Register", "Account", null, "", Icons.Register, "button button-success responsive", h1: false)
     </div>
 </div>

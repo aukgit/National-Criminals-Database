@@ -780,4 +780,34 @@ div.contactus {
 .controls-left-aligned .control-label {
   text-align: left;
 }
+.inner-addon {
+  position: relative;
+  z-index: 1000000;
+}
+.inner-addon .glyphicon,
+.inner-addon .fa {
+  position: absolute;
+  /*padding: 10px;*/
+  padding: 10px 11px 2px 9px;
+  pointer-events: none;
+}
+/* align icon */
+.left-addon .glyphicon,
+.left-addon .fa {
+  left: 0;
+}
+.right-addon .glyphicon,
+.right-addon .fa {
+  right: 0;
+}
+/* add padding  */
+.left-addon input {
+  padding-left: 30px;
+}
+.right-addon input {
+  padding-right: 30px;
+}
+.clear {
+  clear: both;
+}
 /*# sourceMappingURL=utilities.css.map */

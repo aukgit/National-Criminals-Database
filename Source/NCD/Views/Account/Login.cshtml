@@ -14,13 +14,17 @@
         @using (Html.BeginForm("Login", "Account", FormMethod.Post)) {
             @Html.AntiForgeryToken()
 
-            @Html.TextBoxFor(model => model.Email, new {@class = "form-control responsive", placeholder = "Enter email address"})
+            @Html.TextBoxFor(model => model.Email, new { @class = "form-control responsive", placeholder = "Enter email address" })
             @Html.ValidationMessageFor(model => model.Email)
 
-            @Html.PasswordFor(model => model.Password, new {@class = "form-control responsive", placeholder = "Password"})
+            @Html.PasswordFor(model => model.Password, new { @class = "form-control responsive", placeholder = "Password" })
             @Html.ValidationMessageFor(model => model.Password)
+
             <div class="top-gap"></div>
-            <button type="submit" class="button button-primary responsive spacer">Login</button>
+            <button type="submit" class="button button-primary responsive spacer">
+                <i class="@Icons.Login"></i>
+                Login
+            </button>
         }
     </div>
 </div>

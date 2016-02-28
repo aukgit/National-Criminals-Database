@@ -189,6 +189,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\HtmlHelpers.cs" />
+    <Compile Include="Models\CriminalRecordsViewModel.cs" />
     <Compile Include="Models\LoginViewModel.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\RegisterViewModel.cs" />
@@ -206,7 +207,9 @@
     <Content Include="Content\css\additional-styles.css" />
     <Content Include="Content\css\animate-refresh.css" />
     <Content Include="Content\css\animate.css" />
+    <Content Include="Content\css\bootstrap-table.css" />
     <Content Include="Content\css\color-fonts.css" />
+    <Content Include="Content\css\font-awesome.min.css" />
     <Content Include="Content\css\header.css" />
     <Content Include="Content\css\media.css" />
     <Content Include="Content\css\style.css" />
@@ -237,6 +240,9 @@
     <Content Include="JavaScript-Mvc-framework\controllers\controllers.initialize.js" />
     <Content Include="JavaScript-Mvc-framework\extensions\initialize.js" />
     <Content Include="JavaScript-Mvc-framework\jQueryExtend.js" />
+    <Content Include="Scripts\bootstrap-table-export.js" />
+    <Content Include="Scripts\bootstrap-table-filter.js" />
+    <Content Include="Scripts\bootstrap-table.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Content\less\additional-styles.less" />

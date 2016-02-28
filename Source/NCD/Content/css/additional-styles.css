@@ -26,4 +26,12 @@
 /*
     ## validation css - end ##
 */
+a.button {
+  color: white;
+}
+a.button:hover,
+a.button :active:focus {
+  color: white;
+  text-decoration: none;
+}
 /*# sourceMappingURL=additional-styles.css.map */

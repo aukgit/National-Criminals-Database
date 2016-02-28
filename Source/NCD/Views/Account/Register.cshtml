@@ -6,13 +6,11 @@
 @section header {
     @Html.Partial("_Header")
 }
-
 <div class="form">
     @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { role = "form" })) {
         @Html.AntiForgeryToken()
         @Html.ValidationSummary("", new { @class = "text-danger" })
-        <h4>Create a new account.</h4>
-
+        <h4 class="green">Create a new account</h4>
         @Html.TextBoxFor(model => model.Email, new { @class = "form-control responsive", placeholder = "Enter email address" })
         @Html.ValidationMessageFor(model => model.Email)
         @Html.PasswordFor(model => model.Password, new { @class = "form-control responsive", placeholder = "Password" })
@@ -20,8 +18,14 @@
         @Html.PasswordFor(model => model.ConfirmPassword, new { @class = "form-control responsive", placeholder = "Confirm password" })
         @Html.ValidationMessageFor(model => model.ConfirmPassword)
         <br />
-        <button type="submit" class="button button-primary responsive spacer">Submit</button>
-        <button type="button" class="button button-primary responsive spacer" onclick="window.location.href = '@Url.Action(string.Empty, "Home")'">Back</button>
+        <button type="submit" class="button button-primary responsive spacer">
+            <i class="@Icons.UserPlus"></i>
+            Register
+        </button>
+        <button type="button" class="button button-primary responsive spacer" onclick="window.location.href = '@Url.Action(string.Empty, "Home")'">
+            <i class="@Icons.CaretLeft"></i>
+            Back
+        </button>
     }
 </div>
 

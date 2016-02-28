@@ -19,24 +19,31 @@ namespace NCD {
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                 "~/Scripts/bootstrap.js",
                 "~/Scripts/respond.js",
-                "~/Content/js-framework/byId.js",
-                "~/Content/js-framework/app.js",
-                "~/Content/js-framework/extensions/initialize.js",
-                "~/Content/js-framework/controllers/controllers.js",
-                "~/Content/js-framework/controllers/CriminalController.js",
-                "~/Content/js-framework/controllers/controllers.initialize.js",
-                "~/Content/js-framework/jQueryExtend.js",
-                "~/Content/js-framework/app.js",
-                "~/Content/js-framework/app.run.js"
+                "~/Scripts/bootstrap-table.js",
+                "~/Scripts/bootstrap-table-filter.js",
+                "~/Scripts/bootstrap-table-export.js",
+                "~/JavaScript-Mvc-framework/byId.js",
+                "~/JavaScript-Mvc-framework/app.js",
+                "~/JavaScript-Mvc-framework/extensions/initialize.js",
+                "~/JavaScript-Mvc-framework/controllers/controllers.js",
+                "~/JavaScript-Mvc-framework/controllers/CriminalController.js",
+                "~/JavaScript-Mvc-framework/controllers/controllers.initialize.js",
+                "~/JavaScript-Mvc-framework/jQueryExtend.js",
+                "~/JavaScript-Mvc-framework/app.js",
+                "~/JavaScript-Mvc-framework/app.run.js"
                 ));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                 "~/Content/css/style.css",
+                "~/Content/bootstrap.css",
+                "~/Content/css/bootstrap-table.css",
                 "~/Content/css/media.css",
                 "~/Content/css/header.css",
+                "~/Content/css/font-awesome.min.css",
                 "~/Content/css/additional-styles.css", // additional css added which will be converted from .less files 
                 "~/Content/css/animate.css",
                 "~/Content/css/animate-refresh.css",
+                "~/Content/css/color-fonts.css",
                 "~/Content/css/utilities.css"
                 )); 
         }

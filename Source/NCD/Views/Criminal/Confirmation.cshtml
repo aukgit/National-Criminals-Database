@@ -1,17 +1,59 @@
-﻿@model NCD.Models.SearchViewModel
+﻿@model NCD.Models.CriminalRecordsViewModel
 @{
-    ViewBag.Title = "Email Sent!";
+    string title = "Search Results";
+    ViewBag.Title = title;
+    int profilesFound = Model.Criminals.Count;
 }
 @section header {
     @Html.Partial("_Header")
 }
-<hgroup class="title">
-    <h2 class="green">You placed you search successfully:</h2>
-</hgroup>
-
-<div>
-    To see the results of your query, check your email.
-    To make a new search click you can click on below link.
-    <div class="top-gap-2x"></div>
-    @Html.ActionLink("Search again", "Index", "Criminal", null, new { @class = "button button-primary responsive spacer" }) 
+<div id="criminal-controller" data-action="confirmation" data-cache-token="@Model.Token" data-request-url="@Url.Action("SendEmail")">
+    <div id="anti-token">
+        @Html.AntiForgeryToken()
+    </div>
+    @*JavaScript codes are placed inside ~/JavaScript-Mvc-framework/controllers/CriminalController.js-> Confirmation action*@
+    <hgroup class="title animated fadeInUp">
+        <h2 id="header-title">
+            <i class="icon fa fa-spin-custom fa-refresh orangred"></i>
+            <span class="message">Email is sending!</span>
+        </h2>
+        <h4 class="green">You query found @profilesFound criminal profile(s) in the database.</h4>
+    </hgroup>
+    <label id="hiding-label" class="label label-danger f-em-1">
+        <i class="fa fa-spin-custom fa-refresh"></i>
+        Please wait for a while when sending emails to @Model.Email address.
+    </label>
+    <div class=" animated fadeInDown">
+        <table class="table table-hover bootstrap-table-convert" data-show-columns="true" data-search="true" data-pagination="true">
+            <thead>
+            <tr>
+                <th data-field="name">Name</th>
+                <th data-field="alias">Alias</th>
+                <th data-field="Birthday">Birthday</th>
+                <th data-field="Gender">Gender</th>
+                <th data-field="Height">Height (cm)</th>
+                <th data-field="Weight">Weight (kg)</th>
+                <th data-field="Country">Country</th>
+            </tr>
+            </thead>
+            <tbody>
+            @foreach (var criminal in Model.Criminals) {
+                <tr>
+                    <td>@criminal.Name</td>
+                    <td>@criminal.Alias</td>
+                    <td>@criminal.BirthDate.ToString("dd-MMM-yy")</td>
+                    <td>@criminal.Gender</td>
+                    <td>@criminal.Height</td>
+                    <td>@criminal.Weight</td>
+                    <td>@criminal.Country</td>
+                </tr>
+            }
+            </tbody>
+        </table>
+        <div id="conditional-search" class="hide">
+            To make a new search click you can click on below link.
+            <div class="top-gap-2x"></div>
+            @Html.ActionLinkWithIcon("Search again", "Index", "Criminal", null, "", Icons.Search, "button button-primary responsive spacer")
+        </div>
+    </div>
 </div>

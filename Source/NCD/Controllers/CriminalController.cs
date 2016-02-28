@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using NCD.Application.Domain;
@@ -47,16 +48,23 @@ namespace NCD.Controllers {
                  *  
                  *  However, if there is any future chance of query the data from C# then IEnumerable<> would be a better choice.
                  *  Again, it depends on requirements.
-                 * */
+                
+                 *  for IEnumerable, Any() is faster and better
+                 *  List Count is faster.
+                 *  I know it is better to not change the method signature , 
+                 *  however since we already executed the query it is better to have in memory object.
+                 *  */
                 if (criminals.Count > 0) {
-                    /**
-                     * for IEnumerable, Any() is faster and better
-                     * List Count is faster.
-                     * I know it is better to not change the method signature , 
-                     * however since we already executed the query it is better to have in memory object.
-                     * */
-                    EmailService.Send(searchRequest.Email, criminals);
-                    return View("Confirmation");
+                    var token = Guid.NewGuid();
+                    string cacheToken = token.ToString();
+                    var criminalRecordsViewModel = new CriminalRecordsViewModel() {
+                        Criminals = criminals,
+                        Token = token,
+                        Email = searchRequest.Email
+                    };
+
+                    HttpContext.Cache[cacheToken] = criminalRecordsViewModel;
+                    return View("Confirmation", criminalRecordsViewModel);
                 } else {
                     ModelState.AddModelError("", "Sorry ! No results found with these parameters.");
                     return View("Index", model);
@@ -64,6 +72,32 @@ namespace NCD.Controllers {
             }
             ModelState.AddModelError("", "Sorry ! Invalid query parameters.");
             return View("Index", model);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public JsonResult SendEmail(Guid? token) {
+            if (token.HasValue) {
+                var cacheToken = token.Value.ToString();
+                var criminalRecords = HttpContext.Cache[cacheToken] as CriminalRecordsViewModel;
+                if (criminalRecords != null) {
+                    //send email to that given address.
+                    EmailService.Send(criminalRecords.Email, criminalRecords.Criminals);
+                    var result = new {
+                        found = true,
+                        message = "Email is sent successfully."
+                    };
+                    HttpContext.Cache.Remove(cacheToken);
+                    // remove cache , don't need to keep it anymore.
+                    return Json(result);
+                }
+            }
+            var notFoundResult = new {
+                found = false,
+                message = "Email is not sent."
+            };
+            GC.Collect();
+            return Json(notFoundResult);
         }
     }
 }

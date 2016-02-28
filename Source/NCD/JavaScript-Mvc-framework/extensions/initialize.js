@@ -8,4 +8,9 @@ $.app.initialize = function () {
     app.initHiddenContainer();
     // run controller module
     app.controllers.initialize(); // runs all controllers modules.
+
+    var $tables = $(".bootstrap-table-convert");
+    if ($tables.length > 0) {
+        $tables.bootstrapTable();
+    }
 };

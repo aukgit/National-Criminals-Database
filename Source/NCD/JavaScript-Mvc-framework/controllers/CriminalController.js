@@ -15,30 +15,70 @@ $.app.controllers.helloController = {
         /// <summary>
         /// Represents the collection of actions exist inside a controller.
         /// </summary>
-        index : function () {
+        confirmation: function () {
             /// <summary>
-            /// Represents index action page.
+            /// Represents Confirmation action page.
             /// Refers to the data-action attribute.
             /// </summary>
             /// <returns type=""></returns>
-            var self = $.app.controllers.helloController;
-            console.log($.getHiddenValue("Hello"));
-            console.log("Index action ran.");
-            self.$pageElement.append($.getHiddenValue("Hello"));
-        },
+            var self = $.app.controllers.helloController,
+                $page = self.$pageElement,
+                url = $page.attr("data-request-url"),
+                requestCacheToken = $page.attr("data-cache-token"),
+                $antiToken = $.byId("anti-token"),
+                antiTokenField = $antiToken.find("[name='__RequestVerificationToken']"),
+                antiForgeryTokenValue = antiTokenField.val(),
+                $headerTitle = $.byId("header-title"),
+                $icon = $headerTitle.find(".icon"),
+                $message = $headerTitle.find(".message"),
+                $hidingLabel = $.byId("hiding-label"),
+                $conditionalButtonToSearchAgain = $.byId("conditional-search");
 
-        contact: function () {
-            /// <summary>
-            /// Represents contact action page.
-            /// Refers to the data-action attribute.
-            /// </summary>
-            /// <returns type=""></returns>
-            var self = $.app.controllers.helloController;
-            console.log("Contact action ran.");
-            console.log($.getHiddenValue("Hello"));
-            console.log($.getHiddenField("Hello").length);
-            self.$pageElement.append($.getHiddenValue("Hello"));
-        }
+            var jsonData = {
+                token: requestCacheToken,
+                __RequestVerificationToken: antiForgeryTokenValue
+            };
+            var isInTestingMode = false;
+            jQuery.ajax({
+                method: "POST", 
+                url: url,
+                data: jsonData,
+                dataType: "JSON",
+            }).done(function (response) {
+                if (isInTestingMode) {
+                    console.log(response);
+                }
+                var isFound = response.found,
+                    message = response.message;
+            
+                $hidingLabel.addClass("animated")
+                            .addClass("fadeOut")
+                            .delay(500)
+                            .addClass("hide");
+                if (isFound) {
+                    // email is sent successfully.
+                    $conditionalButtonToSearchAgain
+                        .removeClass("hide")
+                        .addClass("animated")
+                        .addClass("fadeIn");
+                    $icon.replaceWith("<i class='fa fa-check green'></i>");
+                    $message.addClass("green")
+                            .html(message);
+                } else {
+                    $icon.replaceWith("<i class='fa fa-times red'></i>");
+                    $message.addClass("red")
+                            .html(message);
+                }
+            }).fail(function (jqXHR, textStatus, exceptionMessage) {
+                console.log("Request failed: " + exceptionMessage);
+                $icon.replaceWith("<i class='fa fa-times red'></i>");
+                $message.addClass("red")
+                        .addClass("f-em-d-7")
+                        .html("Sorry! Your request is failed to send email. Try again.");
+            }).always(function () {
+                //console.log("complete");
+            });
+        },
     },
     bindEvents: {
         /// <summary>

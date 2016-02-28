@@ -9,7 +9,7 @@
     @Styles.Render("~/Content/css")
 </head>
 <body>
-    <!--[if lt IE 9]>
+    <!--[if lt IE 10]>
         <div class="browser-update container-fuild">
             <div class="row">
                 <div class="col-md-12">Warning! Your browser is too old. Please update your browser to the <a href="http://browser-update.org/update.html#3">latest version</a>.</div>
@@ -22,6 +22,7 @@
         @RenderBody()
     </div>
     @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", false)
 </body>
 </html>

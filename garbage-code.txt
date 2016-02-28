@@ -1,0 +1,6 @@
+            string subject = "[National Criminals Database] Your account has been created.";
+                    string body =
+                        "Congrats! You  have created a account at National Criminal Database. Thank you for being with us.";
+
+                    var smtpClient = SmtpClientExtend.GetSmtpClient();
+                    smtpClient.QuickSend(user.Email, subject, body);

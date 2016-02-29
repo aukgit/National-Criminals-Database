@@ -96,7 +96,7 @@ namespace NCD.Controllers {
         [ValidateAntiForgeryToken]
         public ActionResult LogOff() {
             AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
-            return RedirectToAction("Login");
+            return RedirectToAction("Index", "Home");
         }
 
         protected override void Dispose(bool disposing) {

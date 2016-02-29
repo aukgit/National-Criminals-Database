@@ -41,6 +41,12 @@
 .green .header-margin-space-type-1 a {
   color: #008000;
 }
+.light-blue {
+  color: #18B3F6;
+}
+.light-blue .header-margin-space-type-1 a {
+  color: #18b3f6;
+}
 .green-important {
   color: #008000 !important;
 }

@@ -8,8 +8,8 @@
     <div class="absolute-center">
         <a class="logo-link" href="@Url.Action(string.Empty, "Home")">
             <img src="~/Content/img/spectre.png" />
-            <h2>National Criminals Database</h2>
         </a>
+        <h2>National Criminals Database</h2>
         @Html.ValidationSummary("", new { @class = "text-danger" })
         @using (Html.BeginForm("Login", "Account", FormMethod.Post)) {
             @Html.AntiForgeryToken()

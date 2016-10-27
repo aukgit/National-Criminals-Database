@@ -7,17 +7,24 @@ using NCD.Application.Services;
 using NCD.Models;
 using Ninject;
 
-namespace NCD.Controllers {
+namespace NCD.Controllers
+{
     [Authorize]
-    public class CriminalController : Controller {
+    public class CriminalController : Controller
+    {
         [Inject]
-        public ISearchService SearchService { get; set; }
+        public ISearchService SearchService {
+            get; 
+            set;
+        }
 
         [Inject]
         public IEmailService EmailService { get; set; }
 
-        public ActionResult Index() {
-            var model = new SearchViewModel {
+        public ActionResult Index()
+        {
+            var model = new SearchViewModel
+            {
                 Email = HttpContext.GetOwinContext().Request.User.Identity.Name
             };
 
@@ -26,9 +33,12 @@ namespace NCD.Controllers {
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Search(SearchViewModel model) {
-            if (ModelState.IsValid) {
-                var searchRequest = new SearchRequest {
+        public ActionResult Search(SearchViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var searchRequest = new SearchRequest
+                {
                     Email = model.Email,
                     MaxNumberResults = model.MaxNumberResults.HasValue ? model.MaxNumberResults.Value : 0,
                     Name = model.Name,
@@ -54,10 +64,12 @@ namespace NCD.Controllers {
                  *  I know it is better to not change the method signature , 
                  *  however since we already executed the query it is better to have in memory object.
                  *  */
-                if (criminals.Count > 0) {
+                if (criminals.Count > 0)
+                {
                     var token = Guid.NewGuid();
                     string cacheToken = token.ToString();
-                    var criminalRecordsViewModel = new CriminalRecordsViewModel() {
+                    var criminalRecordsViewModel = new CriminalRecordsViewModel()
+                    {
                         Criminals = criminals,
                         Token = token,
                         Email = searchRequest.Email
@@ -65,7 +77,9 @@ namespace NCD.Controllers {
 
                     HttpContext.Cache[cacheToken] = criminalRecordsViewModel;
                     return View("Confirmation", criminalRecordsViewModel);
-                } else {
+                }
+                else
+                {
                     ModelState.AddModelError("", "Sorry ! No results found with these parameters.");
                     return View("Index", model);
                 }
@@ -76,14 +90,18 @@ namespace NCD.Controllers {
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public JsonResult SendEmail(Guid? token) {
-            if (token.HasValue) {
+        public JsonResult SendEmail(Guid? token)
+        {
+            if (token.HasValue)
+            {
                 var cacheToken = token.Value.ToString();
                 var criminalRecords = HttpContext.Cache[cacheToken] as CriminalRecordsViewModel;
-                if (criminalRecords != null) {
+                if (criminalRecords != null)
+                {
                     //send email to that given address.
                     EmailService.Send(criminalRecords.Email, criminalRecords.Criminals);
-                    var result = new {
+                    var result = new
+                    {
                         found = true,
                         message = "Email is sent successfully."
                     };
@@ -92,7 +110,8 @@ namespace NCD.Controllers {
                     return Json(result);
                 }
             }
-            var notFoundResult = new {
+            var notFoundResult = new
+            {
                 found = false,
                 message = "Email is not sent."
             };
